@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "IRCTC Booking Assistant",
+  "version": "0.11.2",
+  "description": "Prefill IRCTC booking details and assist with confirmed-seat selection while keeping login, CAPTCHA, OTP, and payment under user control.",
+  "permissions": ["activeTab", "storage", "scripting", "tabs"],
+  "host_permissions": [
+    "https://www.irctc.co.in/*",
+    "https://irctc.co.in/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "IRCTC Booking Assistant"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.irctc.co.in/*",
+        "https://irctc.co.in/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

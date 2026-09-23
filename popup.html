@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IRCTC Booking Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <div>
+          <h1>IRCTC Assistant</h1>
+          <p>Prefill, search, and stop for human-only steps.</p>
+        </div>
+        <button id="save" class="icon-button" title="Save settings" aria-label="Save settings">Save</button>
+      </header>
+
+      <section class="panel">
+        <h2>Journey</h2>
+        <div class="grid two">
+          <label>
+            From station
+            <input id="fromStation" autocomplete="off">
+          </label>
+          <label>
+            To station
+            <input id="toStation" autocomplete="off">
+          </label>
+          <label>
+            From code
+            <input id="fromCode" autocomplete="off">
+          </label>
+          <label>
+            To code
+            <input id="toCode" autocomplete="off">
+          </label>
+          <label>
+            Date
+            <input id="journeyDate" type="date">
+          </label>
+          <label>
+            Train number
+            <input id="trainNumber" inputmode="numeric" autocomplete="off" placeholder="e.g. 22943">
+          </label>
+          <label>
+            Quota
+            <select id="quota">
+              <option>GENERAL</option>
+              <option>TATKAL</option>
+              <option>PREMIUM TATKAL</option>
+              <option>LADIES</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid four">
+          <label>
+            Preferred class
+            <select id="preferredClass" data-class-select>
+              <option value="">Use fallback order</option>
+              <option value="SL">Sleeper (SL)</option>
+              <option value="3A">AC 3 Tier (3A)</option>
+              <option value="2A">AC 2 Tier (2A)</option>
+              <option value="1A">AC First Class (1A)</option>
+              <option value="CC">AC Chair Car (CC)</option>
+              <option value="EC">Exec. Chair Car (EC)</option>
+              <option value="2S">Second Sitting (2S)</option>
+            </select>
+          </label>
+          <label>
+            Fallback 1
+            <select id="fallbackClass1" data-class-select></select>
+          </label>
+          <label>
+            Fallback 2
+            <select id="fallbackClass2" data-class-select></select>
+          </label>
+          <label>
+            Fallback 3
+            <select id="fallbackClass3" data-class-select></select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Passengers</h2>
+        <div class="passenger-head">
+          <span>Name</span>
+          <span>Age</span>
+          <span>Gender</span>
+          <span>Berth</span>
+        </div>
+        <div id="passengerRows" class="passenger-rows"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Booking Rules</h2>
+        <label>
+          IRCTC user ID
+          <input id="username" autocomplete="username">
+        </label>
+        <div class="grid two">
+          <label>
+            Auto-continue at IST
+            <input id="scheduledContinueTime" type="time" step="1">
+          </label>
+          <p class="clock" id="istClock">IST --:--:--</p>
+        </div>
+        <div class="checks">
+          <label><input id="bookOnlyConfirmed" type="checkbox"> Book only if confirmed berth is available</label>
+          <label><input id="noInsurance" type="checkbox"> No travel insurance</label>
+          <label><input id="disableUpgrade" type="checkbox"> Disable auto-upgrade</label>
+          <label><input id="preferUpi" type="checkbox"> Prefer UPI / QR payment</label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Retry</h2>
+        <div class="checks">
+          <label><input id="retryEnabled" type="checkbox"> Retry transient IRCTC errors with backoff</label>
+        </div>
+        <div class="grid three">
+          <label>
+            Max tries
+            <input id="maxAttempts" type="number" min="1" max="50">
+          </label>
+          <label>
+            Min delay sec
+            <input id="minDelaySeconds" type="number" min="10" max="300">
+          </label>
+          <label>
+            Max delay sec
+            <input id="maxDelaySeconds" type="number" min="15" max="600">
+          </label>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="fillSearch" class="primary">Fill Search</button>
+        <button id="startAssist" class="primary">Start Assist</button>
+        <button id="scheduleAssist" class="primary">Schedule</button>
+        <button id="continueAssist">Continue</button>
+        <button id="stopAssist" class="danger">Stop</button>
+      </section>
+
+      <p id="status" class="status" role="status"></p>
+      <p class="fineprint">Password, CAPTCHA, OTP, final payment, and UPI PIN are never stored or automated.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

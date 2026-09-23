@@ -29,9 +29,6 @@ Local Chrome extension for speeding up IRCTC bookings without storing passwords 
 2. Turn on `Developer mode`.
 3. Click `Load unpacked`.
 4. Select this folder:
-
-   `/Users/nikhilladdha/Documents/New project/train ticket`
-
 5. Pin `IRCTC Booking Assistant` from the extensions menu.
 6. Open or reload IRCTC in the same Chrome profile.
 
@@ -52,7 +49,7 @@ The extension popup still works for editing saved defaults, but the on-page pane
 - To: `RATLAM JN. - RTM`
 - Date: `2026-11-21`
 - Train number: enter before using `Start Assist`
-- Passenger 1: `Nikhil`, age `27`, male
+- Passenger 1: `NAME`, age `XX`, Male
 - Fallback class order: `SL`, `3A`, `2A`
 - Scheduled auto-continue time: blank by default
 - No insurance
